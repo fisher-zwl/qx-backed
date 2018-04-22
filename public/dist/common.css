@@ -1,0 +1,106 @@
+
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, menu, nav, section {
+    display: block;
+}
+/*body {
+  line-height: 1;
+}*/
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/*html{
+  height: 100%;
+}
+body{
+  margin-top: 2.5%;
+  background-color:#38383a ;
+  height: 94%;
+}*/
+
+a{text-decoration:none}
+
+
+.test1{
+    font-size: 42px;
+}
+.clear-fix {
+    *zoom: 1;
+}
+
+.clear-fix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+@media screen and (min-width: 720px) {
+    html {
+        font-size: calc(720px/ 375 * 16);
+    }
+    .wrap-auto {
+        width: calc(720px);
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 720px) and (min-width: 375px) {
+
+    html {
+        font-size: calc(100vw / 320 * 16);
+    }
+
+
+}
+
+@media screen and (max-width: 375px) {
+    html {
+        font-size: calc(100vw / 375 * 16);
+    }
+
+}
+
+
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.w_100{
+    width: 100%
+}
