@@ -4,7 +4,7 @@
   "description": "奈儿后台",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development nodemon app/entry.js"
+    "start": "nodemon app/entry.js"
   },
   "repository": {
     "type": "git",

@@ -18,6 +18,9 @@ gulp.task('watch', function () {
   gulp.watch('public/less/*.less', ['less']);
 })
 
+module.exports.gulpWatch = () =>{
+  gulp.watch('public/less/*.less', ['watch']);
+}
 
 
 

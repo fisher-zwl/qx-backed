@@ -1,9 +1,9 @@
 module.exports.dbConfig={
-  database:'naier',
+  database:'qx',
   username:'root',
-  password:"22222",
+  password:"long902323",
   dialect: 'mysql',
-  host:'请输入mysql地址',
-  port:3308
+  host:'123.207.52.150',
+  port:3306
 }
 module.exports.userPasswordKey='qwuserPasswordKey13560177207'

@@ -1,0 +1,164 @@
+/* 留言板样式 */
+@boardWidth:250px;
+@boardHeigth:300px;
+.message-board{
+    width: @boardWidth;
+    height: auto;
+    background-color: #ededed;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    .mb-title{
+        width: 100%;
+        height: 40px;
+        background-color: #2982c6;
+        .mb-title-cd{
+            color: #fff;
+            font-size: 16px;
+            line-height: 40px;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+        .mb-title-btn{
+            height: 20px;
+						width: 20px;
+						display: inline-block;
+						// text-align: right;
+						float: right;
+						cursor: pointer;
+						margin-top:10px;
+						margin-right: 10px;
+						line-height: 40px;
+						vertical-align: middle;
+						display: none;
+				}
+				.mb-title-btn-show{ 
+					background: url('/image/shrink_icon.png') no-repeat center; 
+					background-size: 16px;
+				}
+				.mb-title-btn-hide{
+					background: url('/image/show_icon.png') no-repeat center; 
+					background-size: 20px 15px;
+				}
+				.isShow{
+					display: block;
+				}
+		}
+		.mb-content-show{
+			display: block;
+		}
+		.mb-content-hide{
+			display: none;
+		}
+    .mb-content{
+				width: 100%;
+				height: @boardHeigth;
+				.mb-content-word{
+					height: 60px;
+					width: @boardWidth - 30px;
+					margin-left: 14px;
+					margin-top: 15px;
+					textarea{
+						height: 54px;
+						width: @boardWidth - 34px;
+						resize: none;
+						border: 1px solid #d5d5d5;
+						outline: none;
+					}
+				}
+				.mb-content-name{
+					text-align: left;
+					span{
+						display: inline-block;
+						height: 30px;
+						width: 35px;
+						background: url('/image/name_icon.png') no-repeat center;
+					}
+					input{
+						display: inline-block;
+						height: 28px;
+						width: @boardWidth - 75px;
+						border: none;
+						outline: none;
+						vertical-align: top;
+					}
+				}
+				.mb-content-phone{
+					span{
+						display: inline-block;
+						height: 30px;
+						width: 35px;
+						background: url('/image/phone_icon.png') no-repeat center;
+					}
+					input{
+						display: inline-block;
+						height: 28px;
+						width: @boardWidth - 75px;
+						border: none;
+						outline: none;
+						vertical-align: top;
+					}
+				}
+				.mb-content-email{
+					span{
+						display: inline-block;
+						height: 30px;
+						width: 35px;
+						background: url('/image/email_icon.png') no-repeat center;
+					}
+					input{
+						display: inline-block;
+						height: 28px;
+						width: @boardWidth - 75px;
+						border: none;
+						outline: none;
+						vertical-align: top;
+					}
+				}
+				.mb-content-address{
+					span{
+						display: inline-block;
+						height: 30px;
+						width: 35px;
+						background: url('/image/address_icon.png') no-repeat center;
+					}
+					input{
+						display: inline-block;
+						height: 28px;
+						width: @boardWidth - 75px;
+						border: none;
+						outline: none;
+						vertical-align: top;
+					}
+					
+				}
+				.mb-content-commit{
+					height: 35px;
+					width: @boardWidth - 30px;
+					margin-left: 14px;
+					margin-top: 10px;
+					button{
+						height: 35px;
+						width: 120px;
+						color: #fff;
+						background-color: #2982c6;
+						outline: none;
+						border: 1px solid #2982c6;
+					}
+					button:hover{
+						outline: none;
+						background-color: #49A9E4;
+						border: 1px solid #49A9E4;
+					}
+				}
+				.mbStyle{
+					height: 30px;
+					width: @boardWidth - 30px;
+					margin-left: 14px;
+					margin-top: 10px;
+					border: 1px solid #d5d5d5;
+					background-color: #fff;
+					outline: none;
+				}
+    }
+}
