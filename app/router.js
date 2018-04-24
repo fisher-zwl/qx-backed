@@ -40,7 +40,7 @@ app.get('/products', web.products)//产品中心
 app.get('/projects', web.projects)//案例展示
 app.get('/news', web.news)//新闻中心
 app.get('/contact-us', web.contactUs)//联系我们
-
+app.route('/api/v1/message-board').post(messageBoard.creatMessage)//留言板
 
 // const cookieParser = require('cookie-parser')
 // app.use(cookieParser())

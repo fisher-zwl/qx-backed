@@ -12,7 +12,7 @@ $(document).ready(function () {
 			}
 			console.log(params);
 			$.ajax({
-				url: "/api/v1/messageBoard",
+				url: "/api/v1/message-board",
 				data: params,
 				type: 'post',
 				cache: false,
