@@ -20,7 +20,6 @@ let db = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, 
   },
 });
 
-
 module.exports.db = db;
 
 

@@ -9,7 +9,7 @@ var processors = [px2rem({remUnit: 16})];
 gulp.task('less', function () {
   return gulp.src('public/less/*.less')
     .pipe(less())
-    .pipe(postcss(processors))
+    // .pipe(postcss(processors))
     .pipe(concat('main.css'))
     .pipe(minifyCss())
     .pipe(gulp.dest('public/dist'))

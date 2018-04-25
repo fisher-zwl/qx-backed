@@ -1,66 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>官网</title>
-    <!-- <link type="text/css" rel="stylesheet" href="dist/common.css"> -->
-    <link type="text/css" rel="stylesheet" href="dist/main.css">
-    <script src="dist/js/jquery-3.3.1.min.js"></script>
-    <!-- <script src="js/index.js"></script> -->
-    <!-- <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"> -->
+	<meta charset="UTF-8">
+	<title>官网</title>
+	<!-- <link type="text/css" rel="stylesheet" href="dist/common.css"> -->
+	<link type="text/css" rel="stylesheet" href="dist/main.css">
+	<script src="dist/js/jquery-3.3.1.min.js"></script>
+	<!-- <script src="js/index.js"></script> -->
+	<!-- <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"> -->
 </head>
 <body>
-    <div class="nav-header">
-        <div class="name">龙的传人</div>
-        <div class="menu">
-            <ul>
-                <li class="home-page {{{sy_visited}}}"><a href="/">首页</a></li>
-                <li class="about-us {{{gywm_visited}}}"><a href="/about-us">关于我们</a></li>
-                <li class="products {{{cpzx_visited}}}"><a href="/products">产品中心</a></li>
-                <li class="projects {{{alzs_visited}}}"><a href="/projects">案例展示</a></li>
-                <li class="news {{{xwzx_visited}}}"><a href="/news">新闻中心</a></li>
-                <li class="contact-us {{{lxwm_visited}}}"><a href="/contact-us">联系我们</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="home-banner">
-    </div>
-    <div class="home-container">
-        {{{body}}}
-    </div>
-    <div class="home-footer"></div>
-    <!-- 留言板html -->
-    <div class="message-board">
-        <div class="mb-title">
-            <span class="mb-title-cd">请您留言</span>
-            <span class="mb-title-btn mb-title-btn-show isShow" id="messageBtn_hide"></span>
-            <span class="mb-title-btn mb-title-btn-hide" id="messageBtn_show"></span>
-        </div>
-        <div id="mbContent" class="mb-content mb-content-show">
-            <div class="mb-content-word">
-                <textarea id="mbWord"></textarea>
-            </div>
-            <div class="mb-content-name mbStyle">
-                <span></span>
-                <input id="mbName" type="text" placeholder="姓名">
-            </div>
-            <div class="mb-content-phone mbStyle">
-                <span></span>
-                <input id="mbPhone" type="text" placeholder="电话">
-            </div>
-            <div class="mb-content-email mbStyle">
-                <span></span>
-                <input id="mbEmail" type="text" placeholder="邮件">
-            </div>
-            <div class="mb-content-address mbStyle">
-                <span></span>
-                <input id="mbAddress" type="text" placeholder="地址">
-            </div>
-            <div class="mb-content-commit">
-                <button id="mbCommit" type="button">发送</button>
-            </div>
-        </div>
-    </div>
+	<div class="nav-header">
+			<div class="name"></div>
+			<div class="menu">
+					<ul>
+							<li class="home-page {{{sy_visited}}}"><a href="/">首页</a></li>
+							<li class="about-us {{{gywm_visited}}}"><a href="/about-us">关于我们</a></li>
+							<li class="products {{{cpzx_visited}}}"><a href="/products">产品中心</a></li>
+							<li class="projects {{{alzs_visited}}}"><a href="/projects">案例展示</a></li>
+							<li class="news {{{xwzx_visited}}}"><a href="/news">新闻中心</a></li>
+							<li class="contact-us {{{lxwm_visited}}}"><a href="/contact-us">联系我们</a></li>
+					</ul>
+			</div>
+	</div>
+	<div class="home-banner">
+			{{>banner}}
+	</div>
+	<div class="home-container">
+			{{{body}}}
+	</div>
+	<div class="home-footer"></div>
+	<!-- 留言板html -->
+	<div class="message-board" style="display: none">
+		<div class="mb-title">
+			<span class="mb-title-cd">请您留言</span>
+			<span class="mb-title-btn mb-title-btn-show isShow" id="messageBtn_hide"></span>
+			<span class="mb-title-btn mb-title-btn-hide" id="messageBtn_show"></span>
+		</div>
+		<div id="mbContent" class="mb-content mb-content-show">
+			<div class="mb-content-word">
+				<textarea id="mbWord"></textarea>
+			</div>
+			<div class="mb-content-name mbStyle">
+				<span></span>
+				<input id="mbName" type="text" placeholder="姓名">
+			</div>
+			<div class="mb-content-phone mbStyle">
+				<span></span>
+				<input id="mbPhone" type="text" placeholder="电话">
+			</div>
+			<div class="mb-content-email mbStyle">
+				<span></span>
+				<input id="mbEmail" type="text" placeholder="邮件">
+			</div>
+			<div class="mb-content-address mbStyle">
+				<span></span>
+				<input id="mbAddress" type="text" placeholder="地址">
+			</div>
+			<div class="mb-content-commit">
+				<button id="mbCommit" type="button">发送</button>
+			</div>
+		</div>
+	</div>
 </body>
 <script src="js/index.js"></script>
 </html>
