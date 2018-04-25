@@ -14,7 +14,10 @@
 module.exports.homePage = (req, res) => {
   console.info('....首页....')
   res.render('html/home_page',
-    {sy_visited:'active'}
+    {
+      sy_visited:'active',
+      banner:'partials/banner'
+    }
   );
 }
 module.exports.aboutUs = (req, res) => {

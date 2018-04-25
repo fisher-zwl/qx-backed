@@ -9,25 +9,38 @@
 	<!-- <script src="js/index.js"></script> -->
 	<!-- <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"> -->
 </head>
+
 <body>
 	<div class="nav-header">
-			<div class="name"></div>
-			<div class="menu">
-					<ul>
-							<li class="home-page {{{sy_visited}}}"><a href="/">首页</a></li>
-							<li class="about-us {{{gywm_visited}}}"><a href="/about-us">关于我们</a></li>
-							<li class="products {{{cpzx_visited}}}"><a href="/products">产品中心</a></li>
-							<li class="projects {{{alzs_visited}}}"><a href="/projects">案例展示</a></li>
-							<li class="news {{{xwzx_visited}}}"><a href="/news">新闻中心</a></li>
-							<li class="contact-us {{{lxwm_visited}}}"><a href="/contact-us">联系我们</a></li>
-					</ul>
-			</div>
+		<div class="name"></div>
+		<div class="menu">
+			<ul>
+				<li class="home-page {{{sy_visited}}}">
+					<a href="/">首页</a>
+				</li>
+				<li class="about-us {{{gywm_visited}}}">
+					<a href="/about-us">关于我们</a>
+				</li>
+				<li class="products {{{cpzx_visited}}}">
+					<a href="/products">产品中心</a>
+				</li>
+				<li class="projects {{{alzs_visited}}}">
+					<a href="/projects">案例展示</a>
+				</li>
+				<li class="news {{{xwzx_visited}}}">
+					<a href="/news">新闻中心</a>
+				</li>
+				<li class="contact-us {{{lxwm_visited}}}">
+					<a href="/contact-us">联系我们</a>
+				</li>
+			</ul>
+		</div>
 	</div>
 	<div class="home-banner">
-			{{>banner}}
+		{{>banner}}
 	</div>
 	<div class="home-container">
-			{{{body}}}
+		{{{body}}}
 	</div>
 	<div class="home-footer"></div>
 	<!-- 留言板html -->
@@ -64,4 +77,5 @@
 	</div>
 </body>
 <script src="js/index.js"></script>
+<script src="js/banner.js"></script>
 </html>
