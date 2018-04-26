@@ -23,31 +23,45 @@ module.exports.homePage = (req, res) => {
 module.exports.aboutUs = (req, res) => {
   console.info('....关于我们....')
   res.render('html/about_us',
-    { gywm_visited:'active',
+    { 
+      gywm_visited:'active',
+      banner:'partials/banner'
     }
   );
 }
 module.exports.products = (req, res) => {
   console.info('....产品中心....')
   res.render('html/products',
-    {cpzx_visited:'active'}
+    {
+      cpzx_visited:'active',
+      banner:'partials/banner'
+    }
   );
 }
 module.exports.projects = (req, res) => {
   console.info('....案例展示....')
   res.render('html/projects',
-    {alzs_visited:'active'}
+    {
+      alzs_visited:'active',
+      banner:'partials/banner'
+    }
   );
 }
 module.exports.news = (req, res) => {
   console.info('....新闻中心....')
   res.render('html/news',
-    {xwzx_visited:'active'}
+    {
+      xwzx_visited:'active',
+      banner:'partials/banner'
+    }
   );
 }
 module.exports.contactUs = (req, res) => {
   console.info('....联系我们....')
   res.render('html/contact_us',
-    {lxwm_visited:'active'}
+    {
+      lxwm_visited:'active',
+      banner:'partials/banner'
+    }
   );
 }

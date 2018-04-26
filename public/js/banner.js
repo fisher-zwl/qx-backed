@@ -1,4 +1,34 @@
-$(function(){
+$(function () {
+	$.ajax({
+		url: "/api/v1/banner-img",
+		type: 'get',
+		cache: false,
+		dataType: 'json',
+		success: function (ret) {
+			let html = '',
+					jsHtml = '';
+			ret.data.forEach((el,index) => {
+				// console.info(el,index)
+				if(index==0){
+					html += '<img src="' + el.href + '">';
+					jsHtml += '<a class="trigger imgSelected" href="javascript:void(0)"></a>';
+				}else{
+					html += '<img style="DISPLAY: none" src="' + el.href + '">';
+					jsHtml += '<a class="trigger" href="javascript:void(0)"></a>';
+				}
+			});
+			$('#bannerImg').append(html);
+			$('#jsNav').append(jsHtml);
+			operationFnc();
+		},
+		error: function () {
+			// view("异常！");
+			//that.tip('系统异常！')
+			console.log('系统异常！666');
+		}
+	});
+});
+function operationFnc(){
 	var curr = 0;
 	$("#jsNav a.trigger").each(function(i){
 		$(this).click(function(){
@@ -35,4 +65,4 @@ $(function(){
 		}
 		$("#jsNav a.trigger").eq(go).click();
 	});
-});
+}

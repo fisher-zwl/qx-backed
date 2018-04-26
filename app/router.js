@@ -33,6 +33,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 // pc端界面路由
 const web =  require('./controller/web')
 const messageBoard = require('./controller/message_board')
+const banner =  require('./controller/banner')
 
 app.get('/', web.homePage)//首页
 app.get('/about-us', web.aboutUs)//关于我们
@@ -41,6 +42,7 @@ app.get('/projects', web.projects)//案例展示
 app.get('/news', web.news)//新闻中心
 app.get('/contact-us', web.contactUs)//联系我们
 app.route('/api/v1/message-board').post(messageBoard.creatMessage)//留言板
+app.route('/api/v1/banner-img').get(banner.banner_img)//轮播图片
 
 // const cookieParser = require('cookie-parser')
 // app.use(cookieParser())

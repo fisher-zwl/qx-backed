@@ -1,8 +1,8 @@
 const db = require('../init').db;
 
 const models = {
-  messageBoard: require('./message_board')
-
+  messageBoard: require('./message_board'),
+  banner: require('./banner')
 }
 // models.Code.belongsToMany(models.Info, {through: 'info_code'});
 // models.Info.belongsToMany(models.Code, {through: 'info_code'});
