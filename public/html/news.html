@@ -4,10 +4,40 @@
 		<div class="news-left">
 			<h1>新闻中心</h1>
 			<ul>
-				<li>行业动态</li>
-				<li>公司新闻</li>
+				{{#each newsBlockData}}
+				{{! I'm in a new block...and the context has changed }}
+				<li>
+					<a href="/news/blockNews_{{blockNewsId}}.html">{{blockNewsName}}</a>
+				</li>
+				{{/each}}
 			</ul>
 		</div>
-		<div class="news-right"></div>
+		<div class="news-right">
+			<div class="r-title">
+				您当前的位置：
+				<a href="/">首页</a> >
+				<a href="/news/">新闻中心</a> >
+				<span>{{currentUrl}}</span>
+			</div>
+			<div class="r-cont">
+			{{#if newsSingleData}}
+				<ul class="r-list">
+					{{#each newsSingleData}}
+						<li class="li-news">
+							<a href="/news/info_{{singleNewsId}}.html">{{title}}</a>
+							<span>[{{pubTime}}]</span>
+						</li>
+					{{/each}}
+				</ul>
+			{{else}}
+				<div class="r-info">
+					详细信息{{newsSingleContent}}
+				</div>
+			{{/if}}
+				<!-- <div class="r-info">
+					详细信息
+				</div> -->
+			</div>
+		</div>
 	</div>
 </div>

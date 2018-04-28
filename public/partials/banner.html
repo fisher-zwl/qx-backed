@@ -3,6 +3,14 @@
 	<a id="next" class="nextBtn qq" href="javascript:void(0)"></a>
 	<div id="js" class="js">
 		<div id="bannerImg" class="box01">
+			{{#each bannerData}}
+				{{#ifOne @index}}
+					<img src="{{../href}}">
+				{{/ifOne}}
+				{{#ifOne_no @index}}
+					<img style="DISPLAY: none" src="{{../href}}">	
+				{{/ifOne_no}}
+			{{/each}}
 				<!-- <img src="image/01.jpg">
 				<img style="DISPLAY: none" src="image/02.jpg">
 				<img style="DISPLAY: none" src="image/03.jpg">
@@ -11,6 +19,14 @@
 		</div>
 		<div class="bg"></div>
 		<div id="jsNav" class="jsNav">
+			{{#each bannerData}}
+				{{#ifOne @index}}	
+					<a class="trigger imgSelected" href="javascript:void(0)"></a>
+				{{/ifOne}}
+				{{#ifOne_no @index}}
+					<a class="trigger" href="javascript:void(0)"></a>
+				{{/ifOne_no}}
+			{{/each}}
 			<!-- <a class="trigger imgSelected" href="javascript:void(0)"></a>
 			<a class="trigger" href="javascript:void(0)"></a>
 			<a class="trigger" href="javascript:void(0)"></a>

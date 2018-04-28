@@ -10,6 +10,7 @@ let db = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, 
     minConnections: 0,
     maxIdleTime: 10000
   },
+  timezone: '+08:00', //东八时区
   define: {
     charset: 'utf8',
     collate: 'utf8_general_ci',
