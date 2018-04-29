@@ -1,1 +1,42 @@
 <!-- 案例展示 -->
+<div class="projects-container">
+	<div class="container">
+		<div class="projects-left">
+			<h1>案例展示</h1>
+			<ul>
+				{{#each projectsBlockData}}
+				<li>
+					<a href="/projects/blockProjects_{{projectsBlockId}}.html">{{name}}</a>
+				</li>
+				{{/each}}
+			</ul>
+		</div>
+		<div class="projects-right">
+			<div class="r-title">
+				您当前的位置：
+				<a href="/">首页</a> >
+				<a href="/projects/">案例展示</a> >
+				<span>{{currentUrl}}</span>
+			</div>
+			<div class="r-cont">
+			{{#if projectsSingleData}}
+				<ul class="r-list">
+					{{#each projectsSingleData}}
+						<li class="li-projects">
+							<a href="/projects/info_{{projectsSingleId}}.html">{{title}}</a>
+							<span>[{{pubTime}}]</span>
+						</li>
+					{{/each}}
+				</ul>
+			{{else}}
+				<div class="r-info">
+					详细信息{{projectsSingleContent}}
+				</div>
+			{{/if}}
+				<!-- <div class="r-info">
+					详细信息
+				</div> -->
+			</div>
+		</div>
+	</div>
+</div>

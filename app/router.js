@@ -34,6 +34,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 const web =  require('./controller/web')
 const messageBoard = require('./controller/message_board')
 const banner =  require('./controller/banner')
+const projectsSingle =  require('./controller/projects_single')
 const newsSingle =  require('./controller/news_single')
 const aboutUS =  require('./controller/about_us')
 const products =  require('./controller/products')
@@ -45,6 +46,8 @@ app.get('/products', web.products)//产品中心
 app.get('/projects', web.projects)//案例展示
 app.get('/news', web.news)//新闻中心
 app.get('/contact-us', web.contactUs)//联系我们
+app.get('/projects/blockProjects_:id.html', projectsSingle.list)//案例展示/具体案例
+app.get('/projects/info_:id.html', projectsSingle.projectsDetail)//案例展示/具体案例/详细信息
 app.get('/news/blockNews_:id.html', newsSingle.list)//新闻中心/具体新闻
 app.get('/news/info_:id.html', newsSingle.newsDetail)//新闻中心/具体新闻/详细信息
 app.get('/about-us/info_:id.html', aboutUS.list)//关于我们/点击项操作

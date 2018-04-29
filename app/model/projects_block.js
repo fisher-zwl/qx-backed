@@ -1,30 +1,29 @@
 const Sequelize = require('sequelize');
 const db = require('../init').db;
 
-let newsBlock = db.define('news_block',//新闻板块
+let projectsBlock = db.define('projects_block',//新闻板块
   {
-    blockNewsId: {
+    projectsBlockId: {
       type: Sequelize.INTEGER(4),
       allowNull:false,//非空
       autoIncrement:true,//自增加
       primaryKey:true,//主键
       unique:true,
-      field:'block_newsId'
+      field:'projects_blockId'
     },
-    blockNewsName: {
+    name: {
       type: Sequelize.STRING(30),
-      comment:'新闻板块名称',
-      field:'block_newsName'
+      allowNull:false,//非空
+      comment:'案例名称'
     },
-    blockNewsDes: {
+    description: {
       type: Sequelize.STRING(100),
-      comment:'新闻版块描述',
-      field:'block_newsDes'
+      comment:'案例描述'
     }
   },
   {
-		freezeTableName: true
+	freezeTableName: true
   }
 );
 
-module.exports = newsBlock;
+module.exports = projectsBlock;

@@ -9,7 +9,7 @@
 //     {}
 //   );
 // }
-const {newsBlock,banner,newsSingle,aboutus,products,contactUs} = require('../model')
+const {newsBlock,banner,newsSingle,aboutus,products,contactUs,projectsBlock,projectsSingle} = require('../model')
 
 /* 菜单切换路由 */
 module.exports.homePage = async (req, res) => {
@@ -57,20 +57,25 @@ module.exports.products = async (req, res) => {
 }
 module.exports.projects = async (req, res) => {
   console.info('....案例展示....')
-  let banner_data = await banner.findAll();
+  let banner_data = await banner.findAll()
+  const projectsBlock_data = await projectsBlock.findAll();
+  const projectsSingle_data = await projectsSingle.findAll();
   res.render('html/projects',
     {
       alzs_visited:'active',
       banner:'partials/banner',
-      bannerData:JSON.parse(JSON.stringify(banner_data))
+      bannerData:JSON.parse(JSON.stringify(banner_data)),
+      projectsBlockData: JSON.parse(JSON.stringify(projectsBlock_data)),
+      projectsSingleData: JSON.parse(JSON.stringify(projectsSingle_data)),
+      currentUrl:'案例展示'
     }
   );
 }
 module.exports.news = async (req, res) => {
   console.info('....新闻中心....')
-  let banner_data = await banner.findAll();
-  const newsBlock_data = await newsBlock.findAll();
-  const newsSingle_data = await newsSingle.findAll();
+  let banner_data = await banner.findAll()
+  const newsBlock_data = await newsBlock.findAll()
+  const newsSingle_data = await newsSingle.findAll()
   res.render('html/news',
     {
       xwzx_visited:'active',
