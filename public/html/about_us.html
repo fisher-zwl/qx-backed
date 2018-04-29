@@ -1,1 +1,27 @@
 <!-- 关于我们 -->
+<div class="about-css">
+  <div class="common-content">
+		<div class="c-left">
+			<h1>关于我们</h1>
+			<ul>
+				{{#each aboutusData}}
+				{{! I'm in a new block...and the context has changed }}
+				<li>
+					<a href="/about-us/info_{{id}}.html">{{title}}</a>
+				</li>
+				{{/each}}
+			</ul>
+		</div>
+		<div class="c-right">
+			<div class="r-title">
+				您当前的位置：
+				<a href="/">首页</a> >
+				<a href="/about-us">关于我们</a> >
+				<span>{{currentTitle}}</span>
+			</div>
+			<div class="r-cont">
+				{{currentContent}}
+			</div>
+		</div>
+	</div>
+</div>

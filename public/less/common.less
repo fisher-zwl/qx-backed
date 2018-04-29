@@ -1,0 +1,79 @@
+/**用于书写公共部分页面样式*/
+/**********《关于我们》《产品中心》《联系我们》模块内容样式***********/
+@contWidth:1200px;
+.common-content{
+	width: @contWidth;
+	margin:0 auto;
+	height: auto;
+	padding-top: 20px;
+	.c-left{
+		width: 200px;
+		height: auto;
+		float: left;
+		background-color: #fff;
+		padding-bottom: 60px;
+		h1{
+			background: url('/image/news_h1.png') no-repeat center;
+			width: 200px;
+			height: 60px;
+			text-align: center;
+			font: normal 24px/57px "微软雅黑";
+			color: #fff;
+			overflow: hidden;
+			margin: 0;
+		}
+		ul{
+			padding: 20px 10px;
+			width: 180px;
+			margin:0;
+			list-style: none;
+			li{
+				padding: 0 10px;
+				position: relative;
+				a{
+					background: url('/image/left_menu_bg.jpg') no-repeat -10px;
+					padding-left: 10px;
+					width: 160px;
+					display: block;
+					font: normal 14px/32px "微软雅黑";
+					color: #353535;
+					text-decoration: none;
+				}
+				a:hover{
+					background: url('/image/left_menu_hover.jpg') no-repeat -10px;
+					color: #357fd5;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+	.c-right{
+		width:  @contWidth - 240px;
+		float: right;
+		background-color: #fff;
+		.r-title{
+			background: url('/image/home.jpg') no-repeat 18px center;
+			padding-left: 62px;
+			width:  @contWidth - 302px;
+			height: 35px;
+			font: normal 14px/36px "宋体";
+			color: #666;
+			border-bottom: solid 1px #dadada;
+			overflow: hidden;
+			a{
+				font: normal 14px/36px "微软雅黑";
+				color: #666;
+				text-decoration: none;
+			}
+			span{
+				color: #357fd5;
+				font-weight: bold;
+			}
+		}
+		.r-cont{
+			width: @contWidth - 280px;
+			padding: 20px;
+			overflow: hidden;
+		}
+	}
+}

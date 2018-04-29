@@ -1,2 +1,27 @@
 <!-- 联系我们 -->
-<div>联系我们</div>
+<div class="contactUs-css">
+  <div class="common-content">
+		<div class="c-left">
+			<h1>联系我们</h1>
+			<ul>
+				{{#each contactUsData}}
+				{{! I'm in a new block...and the context has changed }}
+				<li>
+					<a href="/contact-us/info_{{id}}.html">{{title}}</a>
+				</li>
+				{{/each}}
+			</ul>
+		</div>
+		<div class="c-right">
+			<div class="r-title">
+				您当前的位置：
+				<a href="/">首页</a> >
+				<a href="/contact-us">联系我们</a> >
+				<span>{{currentTitle}}</span>
+			</div>
+			<div class="r-cont">
+				{{currentContent}}
+			</div>
+		</div>
+	</div>
+</div>

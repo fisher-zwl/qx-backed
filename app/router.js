@@ -35,6 +35,9 @@ const web =  require('./controller/web')
 const messageBoard = require('./controller/message_board')
 const banner =  require('./controller/banner')
 const newsSingle =  require('./controller/news_single')
+const aboutUS =  require('./controller/about_us')
+const products =  require('./controller/products')
+const contactUs =  require('./controller/contact_us')
 
 app.get('/', web.homePage)//首页
 app.get('/about-us', web.aboutUs)//关于我们
@@ -44,6 +47,9 @@ app.get('/news', web.news)//新闻中心
 app.get('/contact-us', web.contactUs)//联系我们
 app.get('/news/blockNews_:id.html', newsSingle.list)//新闻中心/具体新闻
 app.get('/news/info_:id.html', newsSingle.newsDetail)//新闻中心/具体新闻/详细信息
+app.get('/about-us/info_:id.html', aboutUS.list)//关于我们/点击项操作
+app.get('/products/info_:id.html', products.list)//产品中心/点击项操作
+app.get('/contact-us/info_:id.html', contactUs.list)//联系我们/点击项操作
 app.route('/api/v1/message-board').post(messageBoard.creatMessage)//留言板
 app.route('/api/v1/banner-img').get(banner.banner_img)//轮播图片
 

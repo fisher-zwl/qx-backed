@@ -4,7 +4,10 @@ const models = {
   messageBoard: require('./message_board'),
   banner: require('./banner'),
   newsBlock:require('./news_block'),
-  newsSingle:require('./news_single')
+  newsSingle:require('./news_single'),
+  aboutus:require('./about_us'),
+  products:require('./products'),
+  contactUs:require('./contact_us'),
 }
 models.newsBlock.hasMany(models.newsSingle, {foreignKey:'blockNewsId'});
 models.newsSingle.belongsTo(models.newsBlock, {foreignKey:'blockNewsId'});

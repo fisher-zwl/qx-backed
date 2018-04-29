@@ -1,2 +1,27 @@
 <!-- 产品中心 -->
-<div>产品中心</div>
+<div class="products-css">
+  <div class="common-content">
+		<div class="c-left">
+			<h1>产品中心</h1>
+			<ul>
+				{{#each productsData}}
+				{{! I'm in a new block...and the context has changed }}
+				<li>
+					<a href="/products/info_{{id}}.html">{{title}}</a>
+				</li>
+				{{/each}}
+			</ul>
+		</div>
+		<div class="c-right">
+			<div class="r-title">
+				您当前的位置：
+				<a href="/">首页</a> >
+				<a href="/products">产品中心</a> >
+				<span>{{currentTitle}}</span>
+			</div>
+			<div class="r-cont">
+				{{currentContent}}
+			</div>
+		</div>
+	</div>
+</div>
