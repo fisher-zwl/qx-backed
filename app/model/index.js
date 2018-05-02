@@ -9,7 +9,8 @@ const models = {
   products:require('./products'),
   contactUs:require('./contact_us'),
   projectsBlock:require('./projects_block'),
-  projectsSingle:require('./projects_single')
+  projectsSingle:require('./projects_single'),
+  Admin:require('./admin')
 }
 models.newsBlock.hasMany(models.newsSingle, {foreignKey:'blockNewsId'});
 models.newsSingle.belongsTo(models.newsBlock, {foreignKey:'blockNewsId'});

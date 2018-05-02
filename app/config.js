@@ -14,4 +14,4 @@ module.exports.dbConfig={
 //   host: '10.10.17.144',
 //   port: 3306
 // }
-// module.exports.userPasswordKey='qwuserPasswordKey13560177207'
+ module.exports.userPasswordKey='bocatAdminPasswordKey18814127341'
