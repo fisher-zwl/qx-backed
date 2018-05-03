@@ -87,6 +87,6 @@ app.get('/admin',function (req,res) {
 const admin = require('./controller/admin')
 // app.route('/admin/v1/users').get(admin.list).post(admin.create).delete(admin.delete)
 app.post('/admin/v1/login', admin.login)
-// app.route('/admin/v1/layout').get(admin.layout)
+app.route('/admin/v1/layout').get(admin.layout)
 
 module.exports = app
