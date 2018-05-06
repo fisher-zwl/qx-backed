@@ -85,8 +85,9 @@ app.get('/admin',function (req,res) {
   res.sendFile(path.join(__dirname, '../dist')+'/admin.html')
 })
 const admin = require('./controller/admin')
-// app.route('/admin/v1/users').get(admin.list).post(admin.create).delete(admin.delete)
 app.post('/admin/v1/login', admin.login)
 app.route('/admin/v1/layout').get(admin.layout)
+app.get('/admin/v1/contact-us', contactUs.searchAll)//联系我们
+app.get('/admin/v1/contact-us/:id', contactUs.findById)//联系我们/通过id寻找
 
 module.exports = app

@@ -30,3 +30,29 @@ module.exports.list = async(req, res) =>{
 		console.error(e)
 	}
 }
+/**
+ * @loong
+ * search
+ */
+module.exports.searchAll = async(req, res) =>{
+	try {
+		let contactUs_data = await contactUs.findAll()
+		res.send(common.response({data: contactUs_data}))
+	} catch (e) {
+		console.error(e)
+	}
+}
+
+/**
+ * @loong
+ * find byId
+ */
+module.exports.findById = async(req, res) =>{
+	let id = req.params.id
+	try {
+		let data = await contactUs.findById(id)
+		res.send(common.response({data: data}))
+	} catch (e) {
+		console.error(e)
+	}
+}
