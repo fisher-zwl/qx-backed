@@ -88,6 +88,7 @@ const admin = require('./controller/admin')
 app.post('/admin/v1/login', admin.login)
 app.route('/admin/v1/layout').get(admin.layout)
 app.get('/admin/v1/contact-us', contactUs.searchAll)//联系我们
-app.get('/admin/v1/contact-us/:id', contactUs.findById)//联系我们/通过id寻找
+app.route('/admin/v1/contact-us/:id', contactUs.findById)//联系我们/通过id寻找
+app.post('/admin/v1/contact-us/update', contactUs.update)//联系我们/通过id寻找
 
 module.exports = app

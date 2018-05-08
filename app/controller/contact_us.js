@@ -56,3 +56,35 @@ module.exports.findById = async(req, res) =>{
 		console.error(e)
 	}
 }
+
+/**
+ * @loong
+ * update
+ */
+module.exports.update = async(req, res) =>{
+	try {
+		let params = common.validateParams(res, req.body, {
+			id: Joi.number(),
+			show: Joi.boolean(),
+			title:Joi.string(),
+			content:Joi.any()
+		})
+		if (params.STOP) return
+		let data = {};
+		if(!params.id) return
+		if(params.show != undefined){
+			data = await contactUs.update({show:params.show},{
+				where: {
+					id: params.id
+				}
+			})
+		}
+		if(params.title || params.content){
+			
+		}
+
+		res.send(common.response({data: data}))
+	} catch (e) {
+		console.error(e)
+	}
+}
