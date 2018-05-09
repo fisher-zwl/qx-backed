@@ -25,7 +25,6 @@ let contactUs = db.define('contact_us',
     },
     content: {
       type: Sequelize.TEXT,
-      allowNull:false,//非空
       comment:'内容',
     },
     picUrl:{

@@ -72,7 +72,7 @@ module.exports.update = async(req, res) =>{
 		if (params.STOP) return
 		let data = {};
 		if(!params.id) return
-		if(params.show != undefined){
+		if(params.show != undefined && !params.title && !params.content){
 			data = await contactUs.update({show:params.show},{
 				where: {
 					id: params.id
@@ -80,9 +80,47 @@ module.exports.update = async(req, res) =>{
 			})
 		}
 		if(params.title || params.content){
-			
+			let isObj = await contactUs.findById(params.id)
+			if(JSON.parse(JSON.stringify(isObj))){//已经存在只是刷新即可
+				data = await contactUs.update({
+					title:params.title,
+					content:params.content
+				},{
+					where:{
+						id: params.id
+					}
+				})
+			}else{//添加新的数据
+				data = await contactUs.create({
+					id:params.id,
+					title:params.title,
+					content:params.content,
+					show:true
+				})
+			}
 		}
 
+		res.send(common.response({data: data}))
+	} catch (e) {
+		console.error(e)
+	}
+}
+
+/**
+ * @loong
+ * create
+ */
+module.exports.create = async(req, res) =>{
+	try {
+		let params = common.validateParams(res, req.body, {
+			title:Joi.string(),
+			content:Joi.any()
+		})
+		if (params.STOP) return
+		let data = await contactUs.create({
+			title:params.title,
+			content:params.content
+		})
 		res.send(common.response({data: data}))
 	} catch (e) {
 		console.error(e)
