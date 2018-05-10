@@ -91,5 +91,16 @@ app.get('/admin/v1/contact-us', contactUs.searchAll)//联系我们
 app.get('/admin/v1/contact-us/:id', contactUs.findById)//联系我们/通过id寻找
 app.post('/admin/v1/contact-us/update', contactUs.update)//联系我们
 app.post('/admin/v1/contact-us/create', contactUs.create)//联系我们
+app.post('/admin/v1/contact-us/delete', contactUs.delete)//联系我们
+app.get('/admin/v1/about-us', aboutUS.searchAll)//关于我们
+app.get('/admin/v1/about-us/:id', aboutUS.findById)//关于我们/通过id寻找
+app.post('/admin/v1/about-us/update', aboutUS.update)//关于我们
+app.post('/admin/v1/about-us/create', aboutUS.create)//关于我们
+app.post('/admin/v1/about-us/delete', aboutUS.delete)//关于我们
+app.get('/admin/v1/products', products.searchAll)//产品中心
+app.get('/admin/v1/products/:id', products.findById)//产品中心/通过id寻找
+app.post('/admin/v1/products/update', products.update)//产品中心
+app.post('/admin/v1/products/create', products.create)//产品中心
+app.post('/admin/v1/products/delete', products.delete)//产品中心
 
 module.exports = app

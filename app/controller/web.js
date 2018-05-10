@@ -26,7 +26,11 @@ module.exports.homePage = async (req, res) => {
 module.exports.aboutUs = async (req, res) => {
   console.info('....关于我们....')
   let banner_data = await banner.findAll()
-  let aboutus_data = await aboutus.findAll()
+  let aboutus_data = await aboutus.findAll({
+    where:{
+      show:true
+    }
+  })
   aboutus_data = JSON.parse(JSON.stringify(aboutus_data))
   res.render('html/about_us',
     { 
@@ -42,7 +46,11 @@ module.exports.aboutUs = async (req, res) => {
 module.exports.products = async (req, res) => {
   console.info('....产品中心....')
   let banner_data = await banner.findAll()
-  let products_data = await products.findAll()
+  let products_data = await products.findAll({
+    where:{
+      show:true
+    }
+  })
   products_data = JSON.parse(JSON.stringify(products_data))
   res.render('html/products',
     {
@@ -90,7 +98,11 @@ module.exports.news = async (req, res) => {
 module.exports.contactUs = async (req, res) => {
   console.info('....联系我们....')
   let banner_data = await banner.findAll()
-  let contactUs_data = await contactUs.findAll()
+  let contactUs_data = await contactUs.findAll({
+    where:{
+      show:true
+    }
+  })
   contactUs_data = JSON.parse(JSON.stringify(contactUs_data))
   res.render('html/contact_us',
     {

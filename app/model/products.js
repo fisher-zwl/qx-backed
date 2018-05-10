@@ -18,9 +18,13 @@ let products = db.define('products',
       allowNull:false,//非空
       comment:'产品标题',
     },
+    show: {
+      type: Sequelize.BOOLEAN ,
+      defaultValue:1,
+      comment:'1:前台显示;0:隐藏',
+    },
     content: {
       type: Sequelize.TEXT,
-      allowNull:false,//非空
       comment:'产品内容',
     },
     picUrl:{

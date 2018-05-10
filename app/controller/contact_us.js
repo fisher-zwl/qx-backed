@@ -126,3 +126,24 @@ module.exports.create = async(req, res) =>{
 		console.error(e)
 	}
 }
+
+/**
+ * @loong
+ * delete
+ */
+module.exports.delete = async(req, res) =>{
+	try {
+		let params = common.validateParams(res, req.body, {
+			id:Joi.number()
+		})
+		if (params.STOP) return
+		let data = await contactUs.destroy({
+			where:{
+				id: params.id
+			}
+		})
+		res.send(common.response({data: data}))
+	} catch (e) {
+		console.error(e)
+	}
+}

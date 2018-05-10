@@ -18,9 +18,13 @@ let aboutus = db.define('about_us',
       allowNull:false,//非空
       comment:'标题名称',
     },
+    show: {
+      type: Sequelize.BOOLEAN ,
+      defaultValue:1,
+      comment:'1:前台显示;0:隐藏',
+    },
     content: {
       type: Sequelize.TEXT,
-      allowNull:false,//非空
       comment:'对应内容',
     },
     picUrl:{
