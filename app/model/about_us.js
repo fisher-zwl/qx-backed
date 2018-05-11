@@ -20,7 +20,7 @@ let aboutus = db.define('about_us',
     },
     show: {
       type: Sequelize.BOOLEAN ,
-      defaultValue:1,
+      defaultValue:0,
       comment:'1:前台显示;0:隐藏',
     },
     content: {

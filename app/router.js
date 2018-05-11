@@ -79,10 +79,10 @@ app.use((req, res, next) => {
 })
 
 //后台代码
-app.use(express.static(path.join(__dirname, '../dist')))
+app.use(express.static(path.join(__dirname, '../public/dist/dist')))
 app.get('/admin',function (req,res) {
   console.info('r')
-  res.sendFile(path.join(__dirname, '../dist')+'/admin.html')
+  res.sendFile(path.join(__dirname, '../public/dist/dist')+'/index.html')
 })
 const admin = require('./controller/admin')
 app.post('/admin/v1/login', admin.login)
