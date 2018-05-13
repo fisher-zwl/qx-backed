@@ -17,7 +17,6 @@ let projectsBlock = db.define('projects_single',//新闻板块
     },
     content: {
       type: Sequelize.TEXT,
-      allowNull:false,//非空
       comment:'案例信息内容',
     },
     KeyWord:{
@@ -37,11 +36,15 @@ let projectsBlock = db.define('projects_single',//新闻板块
 			type: Sequelize.INTEGER(4),
       allowNull:false,//非空
 			field:'projects_blockId'
-		}
+		},
+    status: {
+      type: Sequelize.INTEGER(4),
+      defaultValue:'2',
+      comment:'1:已经发布；2:暂不发布'
+    }
   },
   {
-		freezeTableName: true,
-		timestamps: false, //取消默认生成的createdAt、updatedAt字段
+		freezeTableName: true
   }
 );
 

@@ -38,3 +38,27 @@ module.exports.list = async(req, res) => {
 		console.error(e)
 	}
 }
+/**
+ * @loong
+ * 删除新闻板块
+ * @param {*} req 
+ * @param {*} res 
+ */
+module.exports.delete = async(req, res) => {
+	try {
+		let params = common.validateParams(res, Object.assign(req.query, req.body), {
+			name: Joi.string(),
+			description: Joi.string().allow('')
+		})
+		if (params.STOP) return
+
+		let ret = await projectsBlock.create({
+			name: params.name,
+			description: params.description
+		})
+
+		res.send(common.response({data: ret}))
+	} catch (e) {
+		console.error(e)
+	}
+}

@@ -66,3 +66,51 @@ module.exports.projectsDetail = async(req, res) => {
 		console.error(e)
 	}
 }
+
+/**
+ * @loong
+ * 查询案例
+ * @param {*} req 
+ * @param {*} res 
+ */
+module.exports.search = async(req, res) => {
+	try {
+        let params = common.validateParams(res, req.body, {
+			projectsBlockId: Joi.number().allow(''),
+			status: Joi.number().allow(''),
+		})
+        if (params.STOP) return
+        let data = {}
+        let pm = {}
+        if(params.projectsBlockId == '' && params.status == ''){
+            data = await projectsSingle.findAll({
+                include: [{model: projectsBlock}]
+            })
+        }else if(params.projectsBlockId != '' && params.status == ''){
+            data = await projectsSingle.findAll({
+                where: {
+                    projectsBlockId: params.projectsBlockId
+                },
+                include: [{model: projectsBlock}]
+            })
+        }else if(params.projectsBlockId == '' && params.status != ''){
+            data = await projectsSingle.findAll({
+                where: {
+                    status:params.status
+                },
+                include: [{model: projectsBlock}]
+            })
+        }else{
+            data = await projectsSingle.findAll({
+                where: {
+                    projectsBlockId: params.projectsBlockId,
+                    status:params.status
+                },
+                include: [{model: projectsBlock}]
+            })
+        }
+        res.send(common.response({data: data}))
+	} catch (e) {
+		console.error(e)
+	}
+}

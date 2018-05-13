@@ -85,6 +85,7 @@ app.get('/admin',function (req,res) {
   res.sendFile(path.join(__dirname, '../public/dist/dist')+'/index.html')
 })
 const admin = require('./controller/admin')
+const projectsBlock =  require('./controller/projects_blocks')
 app.post('/admin/v1/login', admin.login)
 app.route('/admin/v1/layout').get(admin.layout)
 app.get('/admin/v1/contact-us', contactUs.searchAll)//联系我们
@@ -102,5 +103,8 @@ app.get('/admin/v1/products/:id', products.findById)//产品中心/通过id寻�
 app.post('/admin/v1/products/update', products.update)//产品中心
 app.post('/admin/v1/products/create', products.create)//产品中心
 app.post('/admin/v1/products/delete', products.delete)//产品中心
+app.get('/admin/v1/projects-block', projectsBlock.list)//案例块级展示
+app.post('/admin/v1/projects-block/create', projectsBlock.create)//案例块级展示
+app.post('/admin/v1/projects-single/search', projectsSingle.search)
 
 module.exports = app
