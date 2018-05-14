@@ -105,6 +105,7 @@ app.post('/admin/v1/products/create', products.create)//产品中心
 app.post('/admin/v1/products/delete', products.delete)//产品中心
 app.get('/admin/v1/projects-block', projectsBlock.list)//案例块级展示
 app.post('/admin/v1/projects-block/create', projectsBlock.create)//案例块级展示
+app.post('/admin/v1/projects-block/delete', projectsBlock.delete)//案例块级展示
 app.post('/admin/v1/projects-single/search', projectsSingle.search)
 
 module.exports = app

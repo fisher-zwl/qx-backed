@@ -47,17 +47,21 @@ module.exports.list = async(req, res) => {
 module.exports.delete = async(req, res) => {
 	try {
 		let params = common.validateParams(res, Object.assign(req.query, req.body), {
-			name: Joi.string(),
-			description: Joi.string().allow('')
+			id: Joi.any()
 		})
 		if (params.STOP) return
-
-		let ret = await projectsBlock.create({
-			name: params.name,
-			description: params.description
-		})
-
-		res.send(common.response({data: ret}))
+		if(params.id instanceof Array && params.id){
+			let data = await projectsBlock.destroy({
+				where:{
+					projectsBlockId:params.id
+				}
+			})
+			res.send(common.response({data: data}))
+		}else{
+			console.error('id:'+'传入的值非数组')
+			return
+		}
+		
 	} catch (e) {
 		console.error(e)
 	}
