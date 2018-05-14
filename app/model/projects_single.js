@@ -29,7 +29,6 @@ let projectsBlock = db.define('projects_single',//新闻板块
     },
     pubTime:{
 			type: Sequelize.DATE(6),
-			allowNull:false,//非空
       comment: '发布时间'
 		},
 		projectsBlockId:{

@@ -114,3 +114,27 @@ module.exports.search = async(req, res) => {
 		console.error(e)
 	}
 }
+
+/**
+ * @loong
+ * 案例信息制作
+ */
+module.exports.create = async(req, res) => {
+	try {
+		let params = common.validateParams(res, Object.assign(req.query, req.body), {
+			title: Joi.string(),
+            content: Joi.any().allow(''),
+            projectsBlockId:Joi.number()
+        })
+		if (params.STOP) return
+		let ret = await projectsSingle.create({
+			title: params.title,
+            content: params.content,
+            projectsBlockId: params.projectsBlockId
+		})
+
+		res.send(common.response({data: ret}))
+	} catch (e) {
+		console.error(e)
+	}
+}
