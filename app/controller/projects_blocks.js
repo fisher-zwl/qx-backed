@@ -26,7 +26,7 @@ module.exports.create = async(req, res) => {
 }
 /**
  * @loong
- * 查询新闻板块
+ * 查询案例板块
  * @param {*} req 
  * @param {*} res 
  */
@@ -40,7 +40,7 @@ module.exports.list = async(req, res) => {
 }
 /**
  * @loong
- * 删除新闻板块
+ * 删除案例板块
  * @param {*} req 
  * @param {*} res 
  */

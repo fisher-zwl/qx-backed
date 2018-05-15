@@ -32,18 +32,22 @@ let newsSingle = db.define('news_single',//新闻板块
     },
     pubTime:{
 			type: Sequelize.DATE(6),
-			allowNull:false,//非空
       comment: '发布时间'
 		},
 		blockNewsId:{
 			type: Sequelize.INTEGER(4),
       allowNull:false,//非空
 			field:'block_newsId'
-		}
+    },
+    status: {
+      type: Sequelize.INTEGER(4),
+      defaultValue:'2',
+      comment:'1:已经发布；2:暂不发布'
+    }
   },
   {
 		freezeTableName: true,
-		timestamps: false, //取消默认生成的createdAt、updatedAt字段
+		// timestamps: false, //取消默认生成的createdAt、updatedAt字段
   }
 );
 

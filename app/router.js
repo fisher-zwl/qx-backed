@@ -86,6 +86,7 @@ app.get('/admin',function (req,res) {
 })
 const admin = require('./controller/admin')
 const projectsBlock =  require('./controller/projects_blocks')
+const newsBlock =  require('./controller/news_block')
 app.post('/admin/v1/login', admin.login)
 app.route('/admin/v1/layout').get(admin.layout)
 app.get('/admin/v1/contact-us', contactUs.searchAll)//联系我们
@@ -108,5 +109,11 @@ app.post('/admin/v1/projects-block/create', projectsBlock.create)//案例块级�
 app.post('/admin/v1/projects-block/delete', projectsBlock.delete)//案例块级展示
 app.post('/admin/v1/projects-single/search', projectsSingle.search)//案例
 app.post('/admin/v1/projects-single/create', projectsSingle.create)//案例
-
+app.post('/admin/v1/projects-single/delete', projectsSingle.delete)//案例
+app.get('/admin/v1/news-block', newsBlock.list)//新闻块级展示
+app.post('/admin/v1/news-block/create', newsBlock.create)//新闻块级展示
+app.post('/admin/v1/news-block/delete', newsBlock.delete)//新闻块级展示
+app.post('/admin/v1/news-single/search', newsSingle.search)//新闻
+app.post('/admin/v1/news-single/create', newsSingle.create)//新闻
+app.post('/admin/v1/news-single/delete', newsSingle.delete)//新闻
 module.exports = app

@@ -2,6 +2,7 @@
 const {projectsSingle,projectsBlock,banner} = require('../model')
 const common = require('../helper/commom')
 const Joi = require('joi')
+const moment = require('moment')
 
 /**
  * @loong
@@ -77,36 +78,52 @@ module.exports.search = async(req, res) => {
 	try {
         let params = common.validateParams(res, req.body, {
 			projectsBlockId: Joi.number().allow(''),
-			status: Joi.number().allow(''),
+            status: Joi.number().allow(''),
+            page: Joi.number(),
+            size: Joi.number(),
 		})
         if (params.STOP) return
+        let page = parseInt(params.page) || 1,
+            size = parseInt(params.size) || 10;
         let data = {}
         let pm = {}
         if(params.projectsBlockId == '' && params.status == ''){
-            data = await projectsSingle.findAll({
-                include: [{model: projectsBlock}]
+            data = await projectsSingle.findAndCount({
+                include: [{model: projectsBlock}],
+                order: [['createdAt', 'DESC']],
+                limit: size,
+                offset: size * (page - 1)
             })
         }else if(params.projectsBlockId != '' && params.status == ''){
-            data = await projectsSingle.findAll({
+            data = await projectsSingle.findAndCount({
                 where: {
                     projectsBlockId: params.projectsBlockId
                 },
-                include: [{model: projectsBlock}]
+                include: [{model: projectsBlock}],
+                order: [['createdAt', 'DESC']],
+                limit: size,
+                offset: size * (page - 1)
             })
         }else if(params.projectsBlockId == '' && params.status != ''){
-            data = await projectsSingle.findAll({
+            data = await projectsSingle.findAndCount({
                 where: {
                     status:params.status
                 },
-                include: [{model: projectsBlock}]
+                include: [{model: projectsBlock}],
+                order: [['createdAt', 'DESC']],
+                limit: size,
+                offset: size * (page - 1)
             })
         }else{
-            data = await projectsSingle.findAll({
+            data = await projectsSingle.findAndCount({
                 where: {
                     projectsBlockId: params.projectsBlockId,
                     status:params.status
                 },
-                include: [{model: projectsBlock}]
+                include: [{model: projectsBlock}],
+                order: [['createdAt', 'DESC']],
+                limit: size,
+                offset: size * (page - 1)
             })
         }
         res.send(common.response({data: data}))
@@ -122,18 +139,63 @@ module.exports.search = async(req, res) => {
 module.exports.create = async(req, res) => {
 	try {
 		let params = common.validateParams(res, Object.assign(req.query, req.body), {
-			title: Joi.string(),
+            id:Joi.number().allow(''),
+            title: Joi.string(),
+            status: Joi.number(),
             content: Joi.any().allow(''),
             projectsBlockId:Joi.number()
         })
-		if (params.STOP) return
-		let ret = await projectsSingle.create({
-			title: params.title,
-            content: params.content,
-            projectsBlockId: params.projectsBlockId
-		})
-
+        if (params.STOP) return
+        if(params.status == 1){
+            params.pubTime = moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
+        }else{
+            params.pubTime = null
+        }
+        let ret = {}
+        if(params.id){
+            ret = await projectsSingle.update({
+                title: params.title,
+                content: params.content,
+                status:params.status,
+                pubTime:params.pubTime,
+                projectsBlockId: params.projectsBlockId 
+            },{
+                where:{ projectsSingleId:params.id }
+            })
+        }else{
+            ret = await projectsSingle.create({
+                title: params.title,
+                content: params.content,
+                status:params.status,
+                pubTime:params.pubTime,
+                projectsBlockId: params.projectsBlockId
+            })
+        }
 		res.send(common.response({data: ret}))
+	} catch (e) {
+		console.error(e)
+	}
+}
+
+/**
+ * @loong
+ * 删除案例信息
+ * @param {*} req 
+ * @param {*} res 
+ */
+module.exports.delete = async(req, res) => {
+	try {
+		let params = common.validateParams(res, Object.assign(req.query, req.body), {
+			id: Joi.any()
+		})
+		if (params.STOP) return
+        let data = await projectsSingle.destroy({
+            where:{
+                projectsSingleId:params.id
+            }
+        })
+        res.send(common.response({data: data}))
+		
 	} catch (e) {
 		console.error(e)
 	}
