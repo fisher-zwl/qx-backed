@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../init').db;
 
-let Admin = db.define('admin',//轮播图片
+let Admin = db.define('admin',
   {
     id: {
 		type: Sequelize.INTEGER(4),
@@ -11,10 +11,19 @@ let Admin = db.define('admin',//轮播图片
         unique:true
     },
     username: {
-		type: Sequelize.STRING(255)
+        type: Sequelize.STRING(255),
+        allowNull:false,//非空
     },
     password:{
-        type: Sequelize.STRING(255)
+        type: Sequelize.STRING(255),
+        allowNull:false,//非空
+    },
+    name:{
+        type: Sequelize.STRING(255),
+        allowNull:false,//非空
+    },
+    phone:{
+        type: Sequelize.STRING(20),
     },
     type:{
         type: Sequelize.BIGINT,
