@@ -15,3 +15,7 @@ module.exports.banner_img = async(req, res) => {
 	// 		bannerImg:ret
 	// });
 }
+
+module.exports.upload = async(req, res) => {
+	console.log(req)
+}

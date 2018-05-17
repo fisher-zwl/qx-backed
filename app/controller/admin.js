@@ -54,12 +54,13 @@ module.exports.create = async(req, res) => {
     username: Joi.string().required(),
     password: Joi.string().allow(''),
     name:Joi.string().required().allow(''),
-    phone:Joi.any().required().allow('')
+    phone:Joi.any().required().allow(''),
+    isPsw:Joi.boolean()
   })
   if (params.STOP) return
-  if(!params.password){
-    params.password = '111111'
-  }
+  // if(!params.password){
+  //   params.password = '111111'
+  // }
   const password = tools.encrypt(params.password)
 
   let u = await Admin.findOne({
@@ -67,14 +68,27 @@ module.exports.create = async(req, res) => {
       username: params.username
     }
   })
+  
   if (u != null && !params.id) {
     res.send(ERRORS.OBJECT_HAVED_EXIT)
     return
   }
-  if(params.id){
+  if(params.id && params.isPsw){
     let r = await Admin.update({
       username: params.username,
       password: password,
+      name:params.name,
+      phone:params.phone
+    },{
+      where:{id:params.id}
+    })
+    console.info(common.response(r))
+    res.send(common.response({data: r}))
+    return
+  }
+  if(params.id && !params.isPsw){
+    let r = await Admin.update({
+      username: params.username,
       name:params.name,
       phone:params.phone
     },{
@@ -125,6 +139,7 @@ module.exports.delete = async(req, res) => {
     id: Joi.number().required()
   })
   if (params.STOP) return
+ 
   let user = await Admin.findOne({
     where: {
       id: req.session.userId
@@ -143,7 +158,73 @@ module.exports.delete = async(req, res) => {
       id: params.id
     }
   })
+
   res.send(common.response({data: admin}))
 
 }
 
+/**
+ * @loong
+ * 删除用户
+ * @param {*} req 
+ * @param {*} res 
+ */
+module.exports.deletedb = async(req, res) => {
+	try {
+		let params = common.validateParams(res, Object.assign(req.query, req.body), {
+			id: Joi.any()
+		})
+		if (params.STOP) return
+    let data = await Admin.destroy({
+        where:{
+            id:params.id
+        }
+    })
+    res.send(common.response({data: data}))
+  
+	} catch (e) {
+		console.error(e)
+	}
+}
+
+
+/**
+ * @loong
+ * 修改用户密码
+ * @param {*} req 
+ * @param {*} res 
+ */
+module.exports.passwordChange = async(req, res) => {
+	try {
+		let params = common.validateParams(res, Object.assign(req.query, req.body), {
+      oldPsw:Joi.string().required(),
+      newPsw:Joi.string()
+		})
+    if (params.STOP) return
+    let user = await Admin.findOne({
+      where: {
+        id: req.session.userId
+      }
+    })
+    console.info(JSON.parse(JSON.stringify(user)))
+    user = JSON.parse(JSON.stringify(user))
+    const oldPsw = tools.encrypt(params.oldPsw)
+    if(oldPsw != user.password){
+      res.send(ERRORS.PASSWORD_ERROR)
+      return
+    }
+    if(params.newPsw){
+      const newPsw = tools.encrypt(params.newPsw)
+      let data = await Admin.update({
+        password:newPsw
+      },{
+        where:{id: req.session.userId}
+      })
+      res.send(common.response({data: data}))
+      return 
+    } 
+    res.send({code:0, msg: '输入旧密码准确'})
+	} catch (e) {
+		console.error(e)
+	}
+}
