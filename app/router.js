@@ -17,7 +17,7 @@ app.use(session({
   secret: 'qw', // 建议使用 128 个字符的随机字符串
   cookie: {maxAge: 10 * 24 * 60 * 60 * 1000}
 }));
-
+app.use('/upload', express.static(path.join(__dirname, '../public/upload')));
 app.set('views', path.join(__dirname, '../public'));
 let hbs = exphbs.create({
   layoutsDir: 'public/html',
@@ -89,6 +89,8 @@ const projectsBlock =  require('./controller/projects_blocks')
 const newsBlock =  require('./controller/news_block')
 app.post('/admin/v1/login', admin.login)
 app.post('/admin/v1/banner-img/upload', banner.upload)
+app.get('/admin/v1/banner-img/searchAll', banner.banner_img)
+app.post('/admin/v1/banner-img/delete', banner.delete)
 app.route('/admin/v1/layout').get(admin.layout)
 app.route('/admin/v1/adminOption').get(admin.list).post(admin.create).delete(admin.delete)
 app.post('/admin/v1/adminOption/deletedb', admin.deletedb)

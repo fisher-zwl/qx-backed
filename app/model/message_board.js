@@ -34,11 +34,21 @@ let messageBoard = db.define('message_board',//留言板表
 			type: Sequelize.STRING(1000),
 			field:'mb_word',
 			comment:'留言内容'
-    }
+		},
+		mbHandler: {
+			type: Sequelize.STRING(50),
+			field:'mb_handler',
+			comment:'处理人'
+		},
+		status:{
+			type:Sequelize.INTEGER(4),
+			defaultValue:0,
+			comment:'0:未处理，1：已处理'
+		}
   },
   {
 		freezeTableName: true,
-		timestamps: false, //取消默认生成的createdAt、updatedAt字段
+		// timestamps: false, //取消默认生成的createdAt、updatedAt字段
   }
 );
 

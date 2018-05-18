@@ -2,7 +2,7 @@
 
 const Joi = require('joi');
 const ERRORS = require('./errors');
-
+const config = require('../config')
 /*
  * 参数验证函数
  * @param {params} 需要验证的参数
@@ -32,3 +32,16 @@ module.exports.validateParams = (res, query, schema) => {
 module.exports.response = ({data, errorCode = ERRORS.SUCCESS} = {}) => {
   return Object.assign(errorCode, {data: data})
 };
+
+/*
+ * 上传文件返回的路径处理
+ */
+module.exports.url = (val) => {
+  let URL = []
+  val.forEach(item => {
+    item.url = config.address + item.url
+    URL.push(item)
+  });
+  return URL
+};
+

@@ -5,10 +5,10 @@
 		<div id="bannerImg" class="box01">
 			{{#each bannerData}}
 				{{#ifOne @index}}
-					<img src="{{../href}}">
+					<img src="{{../url}}">
 				{{/ifOne}}
 				{{#ifOne_no @index}}
-					<img style="DISPLAY: none" src="{{../href}}">	
+					<img style="DISPLAY: none" src="{{../url}}">	
 				{{/ifOne_no}}
 			{{/each}}
 				<!-- <img src="image/01.jpg">

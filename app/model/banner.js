@@ -9,9 +9,13 @@ let banner = db.define('banner_img',//轮播图片
 		autoIncrement:true,//自增加
 		primaryKey:true//主键
     },
-    href: {
+    url: {
 		type: Sequelize.STRING(300),
 		comment:'轮播图片路径'
+    },
+    name: {
+      type: Sequelize.STRING(255),
+      comment:'图片文件名'
     }
   },
   {

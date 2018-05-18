@@ -12,7 +12,6 @@ const ERRORS = {
   NO_PERMISSION:{code:105,msg:'无权限'},
   NO_DELETE:{code:106,msg:'最高权限不能删除'},
   PASSWORD_ERROR:{code:107,msg:'输入的旧密码不准确'}
-
 };
 
 let util = require('util');
