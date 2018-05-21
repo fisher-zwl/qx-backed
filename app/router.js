@@ -122,4 +122,5 @@ app.post('/admin/v1/news-block/delete', newsBlock.delete)//新闻块级展示
 app.post('/admin/v1/news-single/search', newsSingle.search)//新闻
 app.post('/admin/v1/news-single/create', newsSingle.create)//新闻
 app.post('/admin/v1/news-single/delete', newsSingle.delete)//新闻
+app.route('/admin/v1/message-board').get(messageBoard.list).post(messageBoard.update)//新闻
 module.exports = app
