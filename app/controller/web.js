@@ -66,14 +66,17 @@ module.exports.products = async (req, res) => {
 module.exports.projects = async (req, res) => {
   console.info('....案例展示....')
   let banner_data = await banner.findAll()
-  const projectsBlock_data = await projectsBlock.findAll();
-  const projectsSingle_data = await projectsSingle.findAll();
+  let  projectsBlock_data = await projectsBlock.findAll();
+  projectsBlock_data = JSON.parse(JSON.stringify(projectsBlock_data))
+  const projectsSingle_data = await projectsSingle.findAll({
+    where:{projectsBlockId:projectsBlock_data[0].projectsBlockId}
+  });
   res.render('html/projects',
     {
       alzs_visited:'active',
       banner:'partials/banner',
       bannerData:JSON.parse(JSON.stringify(banner_data)),
-      projectsBlockData: JSON.parse(JSON.stringify(projectsBlock_data)),
+      projectsBlockData: projectsBlock_data,
       projectsSingleData: JSON.parse(JSON.stringify(projectsSingle_data)),
       currentUrl:'案例展示'
     }

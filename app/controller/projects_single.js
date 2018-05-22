@@ -17,7 +17,7 @@ module.exports.list = async(req, res) => {
 	try {
 		let ret = await projectsSingle.findAll({
             where: {
-							projectsSingleId: id
+                projectsBlockId: id
             },
             include: [{model: projectsBlock}]
         })

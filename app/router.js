@@ -105,6 +105,7 @@ app.get('/admin/v1/about-us/:id', aboutUS.findById)//关于我们/通过id寻找
 app.post('/admin/v1/about-us/update', aboutUS.update)//关于我们
 app.post('/admin/v1/about-us/create', aboutUS.create)//关于我们
 app.post('/admin/v1/about-us/delete', aboutUS.delete)//关于我们
+app.post('/admin/v1/about-us/upload', aboutUS.upload)//关于我们
 app.get('/admin/v1/products', products.searchAll)//产品中心
 app.get('/admin/v1/products/:id', products.findById)//产品中心/通过id寻找
 app.post('/admin/v1/products/update', products.update)//产品中心
