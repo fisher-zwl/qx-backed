@@ -1,8 +1,10 @@
 // 新闻板块详细信息
-const {newsSingle,newsBlock,banner} = require('../model')
+const {newsSingle,newsBlock,banner,newsImg} = require('../model')
 const common = require('../helper/commom')
 const Joi = require('joi')
 const moment = require('moment')
+const multer = require('multer')
+const config = require('../config')
 /**
  * @loong
  * 查询新闻和新闻板块
@@ -201,4 +203,36 @@ module.exports.delete = async(req, res) => {
 	} catch (e) {
 		console.error(e)
 	}
+}
+
+/**
+ * @loong
+ * 编辑器中上传的图片
+ */
+module.exports.upload = async(req, res) =>{
+	let Storage = multer.diskStorage({
+        //设置文件上传后的路径
+        destination: function (req, file, callback) {
+            callback(null, "./public/upload/wandEditorImg/news");
+        },
+        //设置文件重命名
+        filename: function (req, file, callback) {
+            callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+        }
+    });
+    let upload = multer({ storage: Storage }).single("file"); //Field name and max count
+    upload(req, res,async function (err) {
+        if (err) {
+            console.log(err)
+            return res.end("Something went wrong!");
+            // res.send()
+        }
+        let fileObj = JSON.parse(JSON.stringify(req.file))
+        let data = await newsImg.create({
+            name:fileObj.filename,
+            url:'/upload/wandEditorImg/news/'+fileObj.filename
+		})
+		data = config.address + JSON.parse(JSON.stringify(data)).url
+        res.send({"errno":0,"data":[data]})
+    });
 }

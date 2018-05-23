@@ -10,7 +10,12 @@ $(document).ready(function () {
 			'mbAddress':$('#mbAddress').val(),
 			'mbWord':$('#mbWord').val()
 		}
-		console.log(params);
+		if(params.mbPhone){
+			$('.mb-content-phone').removeClass('isnull')
+		}else{
+			$('.mb-content-phone').addClass('isnull')
+			return
+		}
 		$.ajax({
 			url: "/api/v1/message-board",
 			data: params,
@@ -29,7 +34,17 @@ $(document).ready(function () {
 		});
 	});
 })
-
+function phoneBlur(){
+	let phoneVal = $('#mbPhone').val()
+	if(!phoneVal){
+		$('.mb-content-phone').addClass('isnull')
+		return
+	}
+	$('.mb-content-phone').removeClass('isnull')
+}
+function phoneFocus(){
+	$('.mb-content-phone').removeClass('isnull')
+}
 function hideBoard_hide(){//留言板点击隐藏事件
 	$('#mbContent').removeClass('mb-content-show');
 	$('#mbContent').addClass("mb-content-hide");

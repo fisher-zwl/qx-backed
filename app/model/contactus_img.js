@@ -20,8 +20,7 @@ let banner = db.define('contactus_img',//轮播图片
       type: Sequelize.STRING(255),
     },
     infoId:{
-        type: Sequelize.INTEGER(4),
-        allowNull:false,//非空
+        type: Sequelize.INTEGER(4)
     }
   },
   {

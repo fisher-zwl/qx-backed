@@ -21,7 +21,7 @@ let banner = db.define('news_img',//轮播图片
     },
     infoId:{
         type: Sequelize.INTEGER(4),
-        allowNull:false,//非空
+        // allowNull:false,//非空
     }
   },
   {
