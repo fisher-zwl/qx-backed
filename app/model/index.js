@@ -8,6 +8,7 @@ const models = {
   newsSingle:require('./news_single'),
   aboutus:require('./about_us'),
   aboutusImg:require('./aboutus_img'),
+  productsAr:require('./products_ar'),
   products:require('./products'),
   productsImg:require('./products_img'),
   contactUs:require('./contact_us'),
@@ -34,6 +35,9 @@ models.contactUsImg.belongsTo(models.contactUs, {foreignKey:'infoId'});
 
 models.products.hasMany(models.productsImg, {foreignKey:'infoId'});
 models.productsImg.belongsTo(models.products, {foreignKey:'infoId'});
+
+models.products.hasMany(models.productsAr, {foreignKey:'infoId'});
+models.productsAr.belongsTo(models.products, {foreignKey:'infoId'});
 
 models.projectsSingle.hasMany(models.projectsImg, {foreignKey:'infoId'});
 models.projectsImg.belongsTo(models.projectsSingle, {foreignKey:'infoId'});

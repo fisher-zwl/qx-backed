@@ -1,5 +1,5 @@
 //《产品中心》板块
-const {products,banner,productsImg} = require('../model')
+const {products,banner,productsImg,productsAr} = require('../model')
 const common = require('../helper/commom')
 const Joi = require('joi')
 const multer = require('multer')
@@ -181,4 +181,69 @@ module.exports.upload = async(req, res) =>{
 		data = config.address + JSON.parse(JSON.stringify(data)).url
         res.send({"errno":0,"data":[data]})
     });
+}
+
+/**
+ * @loong
+ * 上传缩略图
+ */
+module.exports.upload_ar = async(req, res) =>{
+	let Storage = multer.diskStorage({
+        //设置文件上传后的路径
+        destination: function (req, file, callback) {
+            callback(null, "./public/upload/suolietupian/products");
+        },
+        //设置文件重命名
+        filename: function (req, file, callback) {
+            callback(null,  "suolue_" + Date.now() + "_" + file.originalname);
+        }
+    });
+    let upload = multer({ storage: Storage }).single("file"); //Field name and max count
+    upload(req, res,async function (err) {
+        if (err) {
+            console.log(err)
+            return res.end("Something went wrong!");
+            // res.send()
+        }
+        let fileObj = JSON.parse(JSON.stringify(req.file))
+		let data = config.address + '/upload/suolietupian/products/'+fileObj.filename
+        res.send({"errno":0,"data":[data]})
+    });
+}
+
+module.exports.update_ar = async(req, res) =>{
+	try {
+		let params = common.validateParams(res, req.body, {
+			id: Joi.number(),
+			infoId: Joi.number().required(),
+			name:Joi.string().required(),
+			url:Joi.string().required(),
+			description:Joi.string()
+		})
+		if (params.STOP) return
+		let data = {}
+		if(params.id){
+			data = await productsAr.update({
+				infoId:params.infoId,
+				name:params.name,
+				url:params.url,
+				description:params.description
+			},{
+				where:{id:params.id}
+			})
+		}else{
+			data = await productsAr.create({
+				infoId:params.infoId,
+				name:params.name,
+				url:params.url,
+				description:params.description
+			})
+		} 
+		if(data){
+			let r = await productsAr.findAll();
+			res.send(common.response({data: r}))
+		}
+	} catch (e) {
+		console.error(e)
+	}
 }

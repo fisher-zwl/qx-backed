@@ -128,4 +128,6 @@ app.post('/admin/v1/news-single/create', newsSingle.create)//新闻
 app.post('/admin/v1/news-single/delete', newsSingle.delete)//新闻
 app.post('/admin/v1/news/upload', newsSingle.upload)//案例//上传图片
 app.route('/admin/v1/message-board').get(messageBoard.list).post(messageBoard.update)//新闻
+app.post('/admin/v1/products/update-ar', products.update_ar)//产品中心/缩略图
+app.post('/admin/v1/products/upload-ar', products.upload_ar)//产品中心/缩略图上传
 module.exports = app
