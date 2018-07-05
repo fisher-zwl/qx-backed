@@ -7,20 +7,24 @@ const db = require('../init').db;
 let banner = db.define('aboutus_img',//轮播图片
   {
     picId: {
-		type: Sequelize.INTEGER(4),
-		allowNull:false,//非空
-		autoIncrement:true,//自增加
-		primaryKey:true//主键
+      type: Sequelize.INTEGER(4),
+      allowNull:false,//非空
+      autoIncrement:true,//自增加
+      primaryKey:true,//主键
+      field:'picId'
     },
     url: {
-		type: Sequelize.STRING(255),
-		comment:'轮播图片路径'
+      type: Sequelize.STRING(255),
+      comment:'轮播图片路径',
+      field:'url'
     },
     name: {
       type: Sequelize.STRING(255),
+      field:'name'
     },
     infoId:{
-        type: Sequelize.INTEGER(4)
+        type: Sequelize.INTEGER(4),
+        field:'infoId'
     }
   },
   {

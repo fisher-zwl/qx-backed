@@ -14,11 +14,13 @@ let projectsBlock = db.define('projects_block',//新闻板块
     name: {
       type: Sequelize.STRING(30),
       allowNull:false,//非空
-      comment:'案例名称'
+      comment:'案例名称',
+      field:'name'
     },
     description: {
       type: Sequelize.STRING(100),
-      comment:'案例描述'
+      comment:'案例描述',
+      field:'description'
     }
   },
   {

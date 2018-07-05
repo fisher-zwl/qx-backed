@@ -116,6 +116,7 @@ module.exports.login = async(req, res) => {
   })
   if (params.STOP) return
   const password = tools.encrypt(params.password)
+  // console.info(password);
   let admin = await Admin.findOne({
     where: {
       username: params.username,
